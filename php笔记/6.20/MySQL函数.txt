@@ -1,0 +1,7 @@
+MySQLi函数：
+	1. mysqli_connect（'连接地址','用户名','密码','数据库名称','端口号'）连接数据库
+	2.mysqli_close(‘数据库返回值’)关闭数据库
+	3.mysqli_insert_id（$link）:返回在执行插入语句时自动生成的id编号
+	4.mysqli_connect_errno()：数据库连接时的错误代码（0代表连接成功）
+	5.mysqli_connect_error（）：返回数据库连接失败时的错误描述。（空代表连接成功）
+	6.mysqli_affected_rows($link)：返回数据库上一次操作的受影响的行数

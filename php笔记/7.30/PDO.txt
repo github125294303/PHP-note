@@ -1,0 +1,43 @@
+
+PDO优势：
+	可以在多个数据库中自由切换，要比mysqli函数灵活。
+
+  
+PDO 类
+	1.连接数据库
+	在实例化时给构造函数传参数（自动执行）就是在连接数据库
+	$pdo=new PDO('要连接的数据库:host=地址;dbname=库名;port=端口号;charset=utf8','用户名','密码')
+
+	2.query():执行sql语句，返回PDOStatement类；
+	3.exec():执行sql语句，返回受影响的行数（只针对修改和删除使用）
+	4.execute()：向服务器存一条sql语句（预处理），
+		     返回Statement类   用？代替参数
+		     预处理的优势：可以减轻一点点带宽，最主要可以有效防止sql注入
+
+	5.lastInsertId()：返回最后一次插入值自动生成的id
+
+
+
+
+数据库事务：
+		是指一系列的数据库操作，在执行事务时，如果中途发生异常，应该完全终止事务进行，任务全部失败（不执行），如果没有	 		问题，那	应该全部执行
+		1.beginTransaction（）开启事务
+		2.commit（）提交事务
+		3.rollBack()回滚事务
+			在进行数据库事务时应该使用操作执行的报错方式为抛出异常
+			$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			利用try{}catch（PDOException $exc）{}检测异常
+
+
+
+PDOStatement类：
+	1.fetchAll():取出sql语句中查询时所有记录
+		参数：  
+			PDO::FETCH_ASSOC 代表值 2 返回关联数组
+			PDO::FETCH_NUM 代表值 3 返回索引数组
+			PDO::FETCH_BOTH 代表值 4 返回关联数组与索引数组并存
+	2.execute(array,(val1,val2))执行预处理语句  第一个val代表第一个问号，第二个代表第二个问号，
+
+	3.bindValue（索引 从1开始 ，值）给预处理语句绑定参数，索引从1 开始
+
+	4.fetch（）取出sql语句中查询的第一条数据

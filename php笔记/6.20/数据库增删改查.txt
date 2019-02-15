@@ -1,0 +1,48 @@
+Sql语句
+	1（增）.INSERT INTO表名（字段名）VALUES（字段值）
+
+		INSERT INTO 1702_list(name,class,age) VALUES('张思博','1612B',20);
+
+	2.（删）DELETE FROM 表名 WHERE 字段名=条件 （例  id=3为条件）
+		DELETE FROM 1702_list WHERE id=7;（删除id=7的）
+		DELETE FROM 1702_list WHERE id>7;（删除id>7的）
+		DELETE FROM 1702_list WHERE id>4 AND id<9;（删除id>4并且<9的）
+			
+			PS：不只是id   添加的所有的都可以进行（例如 age>19   'name'='aa' 等等添加的条件删除）
+			
+			大招慎用：DELETE FROM 1702_list（删除整个表）
+	
+	3（改）UPDATE 表名 SET 字段名=字段值 WHERE 字段名=条件（例如 id=3）;
+		
+		UPDATE 1702_list SET `name`='李亮',age=23 WHERE id=1;
+
+
+	4（查）SELECT （字段名） FROM 表名 WHERE  条件（id=3）；
+		SELECT age FROM 1702_list WHERE name='李门春子'
+
+		（1）（LIMIT做分页）SELECT * age FROM 1702_list WHERE age>15 LIMIT 4（*为查询全局  age为只查age   LIMIT 是查几条数据）
+		
+		SELECT * age FROM 1702_list WHERE age>15 LIMIT 4，5（第一个参数是从哪开始取数据，第二个参数是取几条数据）如果值只填写		一个参数，那么就是代表取几条数据
+
+
+		（2）order by（desc,asc）(排序）
+			SELECT * FROM 表名 ORDER BY 字段名 desc
+				desc  倒序   asc正序
+		
+		（3）count 汇总
+			SELECT COUNT(age) AS abc FROM 1702_list（AS  abc  是取的一个名）
+			
+			SELECT MAX(age) AS abc FROM 1702_list（AS  abc  是取的一个名）
+			SELECT MIN(age) AS abc FROM 1702_list（AS  abc  是取的一个名）
+
+			MAX  取最大值  MIN  取最小值
+		
+		（4）LIKE 模糊查询(搜索)
+			SELECT & FROM 表名 WHERE `name`LIKE`%a`;
+
+			在进行模糊查询时 百分号代表任意值
+			（1） %a  结尾必须为 a 值
+			（2） a%  开头必须为a
+			（3） %a%    只要值里面a存在就满足条件 
+
+		

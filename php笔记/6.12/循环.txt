@@ -1,0 +1,6 @@
+foreach（）循环（遍历数组）
+  foreach($array as $k=>$v){
+	echo$v['name'];
+  }
+  在遍历数组时 将要遍历的数组放置第一项，使用as关键字，其后跟着数组  key=>val   key代表索引（关联数组的key）val带表值
+ 
